@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 from database.db import Base, engine
+from models.models import *
 from routes import auth_routes, company_routes, ledger_routes, item_routes, voucher_routes
 
 Base.metadata.create_all(bind=engine)

@@ -37,3 +37,9 @@ class VoucherCreate(BaseModel):
 class UserLogin(BaseModel):
     email: str
     password: str
+
+class CompanyCreate(BaseModel):
+    name: str
+    address: str
+    gst_number: str
+    state: str
