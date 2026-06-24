@@ -33,3 +33,7 @@ class VoucherCreate(BaseModel):
     quantity: float = 0
     rate: float = 0
     company_id: int
+
+class UserLogin(BaseModel):
+    email: str
+    password: str
