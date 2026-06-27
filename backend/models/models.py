@@ -58,3 +58,11 @@ class Voucher(Base):
     total_amount = Column(Float, default=0)
     date = Column(DateTime, default=datetime.utcnow)
     company_id = Column(Integer, ForeignKey("companies.id"))
+
+class Group(Base):
+    __tablename__ = "groups"
+
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String)
+    group_type = Column(String)
+    company_id = Column(Integer, ForeignKey("companies.id"))
