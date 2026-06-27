@@ -43,3 +43,6 @@ class CompanyCreate(BaseModel):
     address: str
     gst_number: str
     state: str
+
+class RefreshTokenRequest(BaseModel):
+    refresh_token: str

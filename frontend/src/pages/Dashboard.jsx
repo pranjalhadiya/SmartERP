@@ -1,24 +1,44 @@
+import { useEffect, useState } from "react";
+import api from "../services/api";
+
 function Dashboard() {
+  const [dashboard, setDashboard] = useState(null);
+
+  const getDashboard = async () => {
+    const res = await api.get("/dashboard/");
+    setDashboard(res.data);
+  };
+
+  useEffect(() => {
+    getDashboard();
+  }, []);
+
+  if (!dashboard) {
+    return <h1 className="p-10">Loading...</h1>;
+  }
+
   return (
-    <div>
-      <h1>Gateway of SmartERP</h1>
+    <div className="min-h-screen bg-gray-100 p-10">
+      <h1 className="text-3xl font-bold mb-2">Gateway of SmartERP</h1>
+      <h2 className="text-xl mb-8">{dashboard.company}</h2>
 
-      <h3>ABC Traders</h3>
+      <div className="grid grid-cols-3 gap-5 mb-8">
+        <div className="bg-white p-5 rounded shadow">Customers: {dashboard.customers}</div>
+        <div className="bg-white p-5 rounded shadow">Suppliers: {dashboard.suppliers}</div>
+        <div className="bg-white p-5 rounded shadow">Items: {dashboard.items}</div>
+        <div className="bg-white p-5 rounded shadow">Sales: {dashboard.sales}</div>
+        <div className="bg-white p-5 rounded shadow">Purchases: {dashboard.purchases}</div>
+      </div>
 
-      <p>Customers: 0</p>
-      <p>Suppliers: 0</p>
-      <p>Items: 0</p>
-
-      <hr />
-
-      <h3>Modules</h3>
-
-      <ul>
-        <li>Masters</li>
-        <li>Transactions</li>
-        <li>Inventory</li>
-        <li>Reports</li>
-      </ul>
+      <div className="bg-white p-6 rounded shadow">
+        <h3 className="text-xl font-semibold mb-4">Modules</h3>
+        <ul className="space-y-2">
+          <li>Masters</li>
+          <li>Transactions</li>
+          <li>Inventory</li>
+          <li>Reports</li>
+        </ul>
+      </div>
     </div>
   );
 }
