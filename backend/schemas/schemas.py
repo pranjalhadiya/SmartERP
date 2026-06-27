@@ -65,6 +65,16 @@ class StockItemCreate(BaseModel):
     gst_percent: float = 0
 
 
+class StockItemUpdate(BaseModel):
+    name: str
+    sku: str
+    hsn_code: str
+    quantity: float
+    purchase_price: float
+    selling_price: float
+    gst_percent: float = 0
+
+
 class VoucherCreate(BaseModel):
     voucher_type: str
     party_id: int

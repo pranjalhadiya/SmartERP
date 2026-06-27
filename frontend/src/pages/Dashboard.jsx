@@ -52,7 +52,10 @@ function Dashboard() {
                         <p className="text-sm">Assets, liabilities, income and expenses</p>
                     </button>
 
-                    <button className="bg-green-600 text-white p-6 rounded-lg shadow text-left">
+                    <button
+                        onClick={() => navigate("/items")}
+                        className="bg-green-600 text-white p-6 rounded-lg shadow hover:bg-green-700 text-left"
+                    >
                         <h4 className="text-lg font-semibold">Inventory</h4>
                         <p className="text-sm">Stock items and quantity management</p>
                     </button>
