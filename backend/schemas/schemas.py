@@ -17,6 +17,13 @@ class LedgerCreate(BaseModel):
     address: str | None = None
     opening_balance: float = 0
 
+class LedgerUpdate(BaseModel):
+    name: str
+    ledger_type: str
+    phone: str | None = None
+    address: str | None = None
+    opening_balance: float = 0
+
 class StockItemCreate(BaseModel):
     name: str
     sku: str

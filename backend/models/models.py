@@ -10,6 +10,8 @@ class User(Base):
     email = Column(String, unique=True, index=True)
     password = Column(String)
 
+    current_company_id = Column(Integer, nullable=True)
+
 class Company(Base):
     __tablename__ = "companies"
 
