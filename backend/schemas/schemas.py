@@ -22,6 +22,13 @@ class CompanyCreate(BaseModel):
     state: str
 
 
+class CompanyUpdate(BaseModel):
+    name: str
+    address: str
+    gst_number: str
+    state: str
+
+
 class LedgerCreate(BaseModel):
     name: str
     ledger_type: str

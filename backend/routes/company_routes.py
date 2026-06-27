@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 
 from database.db import get_db
 from models.models import Company
-from schemas.schemas import CompanyCreate
+from schemas.schemas import CompanyCreate, CompanyUpdate
 from auth.dependencies import get_current_user
 
 router = APIRouter(
@@ -46,6 +46,34 @@ def get_companies(
     ).all()
 
     return companies
+
+@router.put("/{company_id}")
+def update_company(
+    company_id: int,
+    updated_company: CompanyUpdate,
+    db: Session = Depends(get_db),
+    current_user=Depends(get_current_user)
+):
+    company = db.query(Company).filter(
+        Company.id == company_id,
+        Company.user_id == current_user["user_id"]
+    ).first()
+
+    if not company:
+        raise HTTPException(status_code=404, detail="Company not found")
+
+    company.name = updated_company.name
+    company.address = updated_company.address
+    company.gst_number = updated_company.gst_number
+    company.state = updated_company.state
+
+    db.commit()
+    db.refresh(company)
+
+    return {
+        "message": "Company updated successfully",
+        "company": company
+    }
 
 @router.delete("/{company_id}")
 def delete_company(
