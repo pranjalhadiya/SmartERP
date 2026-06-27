@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import api from "../services/api";
 
 function Dashboard() {
   const [dashboard, setDashboard] = useState(null);
+  const navigate = useNavigate();
 
   const getDashboard = async () => {
     const res = await api.get("/dashboard/");
@@ -32,12 +34,31 @@ function Dashboard() {
 
       <div className="bg-white p-6 rounded shadow">
         <h3 className="text-xl font-semibold mb-4">Modules</h3>
-        <ul className="space-y-2">
-          <li>Masters</li>
-          <li>Transactions</li>
-          <li>Inventory</li>
-          <li>Reports</li>
-        </ul>
+
+        <div className="grid grid-cols-2 gap-4">
+          <button
+            onClick={() => navigate("/ledgers")}
+            className="bg-blue-600 text-white p-6 rounded-lg shadow hover:bg-blue-700 text-left"
+          >
+            <h4 className="text-lg font-semibold">Ledger Management</h4>
+            <p className="text-sm">Customers, suppliers, cash and bank ledgers</p>
+          </button>
+
+          <button className="bg-green-600 text-white p-6 rounded-lg shadow text-left">
+            <h4 className="text-lg font-semibold">Inventory</h4>
+            <p className="text-sm">Stock items and quantity management</p>
+          </button>
+
+          <button className="bg-purple-600 text-white p-6 rounded-lg shadow text-left">
+            <h4 className="text-lg font-semibold">Vouchers</h4>
+            <p className="text-sm">Sales, purchase, receipt and payment</p>
+          </button>
+
+          <button className="bg-orange-600 text-white p-6 rounded-lg shadow text-left">
+            <h4 className="text-lg font-semibold">Reports</h4>
+            <p className="text-sm">Business and accounting reports</p>
+          </button>
+        </div>
       </div>
     </div>
   );

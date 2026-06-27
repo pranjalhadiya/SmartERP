@@ -5,6 +5,7 @@ import Register from "./pages/Register";
 import CompanySelection from "./pages/CompanySelection";
 import CreateCompany from "./pages/CreateCompany";
 import Dashboard from "./pages/Dashboard";
+import Ledgers from "./pages/Ledgers";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Route path="/companies" element={<CompanySelection />} />
       <Route path="/companies/create" element={<CreateCompany />} />
       <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/ledgers" element={<Ledgers />} />
     </Routes>
   );
 }
