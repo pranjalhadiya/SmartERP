@@ -6,6 +6,7 @@ import CompanySelection from "./pages/CompanySelection";
 import CreateCompany from "./pages/CreateCompany";
 import Dashboard from "./pages/Dashboard";
 import Ledgers from "./pages/Ledgers";
+import Groups from "./pages/Groups";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Route path="/companies/create" element={<CreateCompany />} />
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/ledgers" element={<Ledgers />} />
+      <Route path="/groups" element={<Groups />} />
     </Routes>
   );
 }
