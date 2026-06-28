@@ -82,3 +82,11 @@ class VoucherCreate(BaseModel):
     quantity: float = 0
     rate: float = 0
     company_id: int
+
+
+class PurchaseVoucherCreate(BaseModel):
+    party_id: int
+    item_id: int
+    quantity: float
+    rate: float
+    gst_percent: float = 0

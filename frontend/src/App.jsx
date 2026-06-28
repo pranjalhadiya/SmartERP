@@ -8,6 +8,7 @@ import Dashboard from "./pages/Dashboard";
 import Ledgers from "./pages/Ledgers";
 import Groups from "./pages/Groups";
 import Items from "./pages/Items";
+import PurchaseVoucher from "./pages/PurchaseVoucher";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <Route path="/ledgers" element={<Ledgers />} />
       <Route path="/groups" element={<Groups />} />
       <Route path="/items" element={<Items />} />
+      <Route path="/purchase" element={<PurchaseVoucher />} />
     </Routes>
   );
 }

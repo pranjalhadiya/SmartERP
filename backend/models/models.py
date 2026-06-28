@@ -55,6 +55,7 @@ class Voucher(Base):
     item_id = Column(Integer, ForeignKey("stock_items.id"), nullable=True)
     quantity = Column(Float, default=0)
     rate = Column(Float, default=0)
+    gst_percent = Column(Float, default=0)
     total_amount = Column(Float, default=0)
     date = Column(DateTime, default=datetime.utcnow)
     company_id = Column(Integer, ForeignKey("companies.id"))

@@ -60,9 +60,17 @@ function Dashboard() {
                         <p className="text-sm">Stock items and quantity management</p>
                     </button>
 
-                    <button className="bg-purple-600 text-white p-6 rounded-lg shadow text-left">
-                        <h4 className="text-lg font-semibold">Vouchers</h4>
-                        <p className="text-sm">Sales, purchase, receipt and payment</p>
+                    <button
+                        onClick={() => navigate("/purchase")}
+                        className="bg-purple-600 text-white p-6 rounded-lg shadow hover:bg-purple-700 text-left"
+                    >
+                        <h4 className="text-lg font-semibold">
+                            Purchase Voucher
+                        </h4>
+
+                        <p className="text-sm">
+                            Purchase entries and stock updates
+                        </p>
                     </button>
 
                     <button className="bg-orange-600 text-white p-6 rounded-lg shadow text-left">

@@ -2,7 +2,15 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from database.db import Base, engine
 from models.models import * 
-from routes import auth_routes, company_routes, ledger_routes, item_routes, voucher_routes, dashboard_routes, group_routes
+from routes import (
+    auth_routes,
+    company_routes,
+    ledger_routes,
+    item_routes,
+    voucher_routes,
+    dashboard_routes,
+    group_routes
+)
 
 Base.metadata.create_all(bind=engine)
 
@@ -26,6 +34,7 @@ app.include_router(item_routes.router)
 app.include_router(voucher_routes.router)
 app.include_router(dashboard_routes.router)
 app.include_router(group_routes.router)
+app.include_router(voucher_routes.router)
 
 @app.get("/")
 def home():
