@@ -90,3 +90,11 @@ class PurchaseVoucherCreate(BaseModel):
     quantity: float
     rate: float
     gst_percent: float = 0
+
+
+class SalesVoucherCreate(BaseModel):
+    party_id: int
+    item_id: int
+    quantity: float
+    rate: float
+    gst_percent: float = 0
