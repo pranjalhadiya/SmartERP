@@ -61,19 +61,16 @@ function Dashboard() {
                     </button>
 
                     <button
-                        onClick={() => navigate("/purchase")}
+                        onClick={() => navigate("/vouchers")}
                         className="bg-purple-600 text-white p-6 rounded-lg shadow hover:bg-purple-700 text-left"
                     >
-                        <h4 className="text-lg font-semibold">Purchase Voucher</h4>
-                        <p className="text-sm">Purchase entries and stock updates</p>
-                    </button>
+                        <h4 className="text-lg font-semibold">
+                            Vouchers
+                        </h4>
 
-                    <button
-                        onClick={() => navigate("/sales")}
-                        className="bg-pink-600 text-white p-6 rounded-lg shadow hover:bg-pink-700 text-left"
-                    >
-                        <h4 className="text-lg font-semibold">Sales Voucher</h4>
-                        <p className="text-sm">Sales entries and stock deduction</p>
+                        <p className="text-sm">
+                            Purchase, Sales, Receipt and Payment vouchers
+                        </p>
                     </button>
 
                     <button className="bg-orange-600 text-white p-6 rounded-lg shadow text-left">
