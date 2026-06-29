@@ -73,9 +73,12 @@ function Dashboard() {
                         </p>
                     </button>
 
-                    <button className="bg-orange-600 text-white p-6 rounded-lg shadow text-left">
+                    <button
+                        onClick={() => navigate("/reports")}
+                        className="bg-orange-600 text-white p-6 rounded-lg shadow hover:bg-orange-700 text-left"
+                    >
                         <h4 className="text-lg font-semibold">Reports</h4>
-                        <p className="text-sm">Business and accounting reports</p>
+                        <p className="text-sm">Sales, purchase, stock and outstanding reports</p>
                     </button>
                 </div>
             </div>

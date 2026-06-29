@@ -9,7 +9,8 @@ from routes import (
     item_routes,
     voucher_routes,
     dashboard_routes,
-    group_routes
+    group_routes,
+    report_routes
 )
 
 Base.metadata.create_all(bind=engine)
@@ -34,6 +35,7 @@ app.include_router(item_routes.router)
 app.include_router(voucher_routes.router)
 app.include_router(dashboard_routes.router)
 app.include_router(group_routes.router)
+app.include_router(report_routes.router)
 
 
 @app.get("/")

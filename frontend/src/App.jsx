@@ -12,6 +12,7 @@ import Vouchers from "./pages/Vouchers";
 import PurchaseVoucher from "./pages/PurchaseVoucher";
 import SalesVoucher from "./pages/SalesVoucher";
 import Invoice from "./pages/Invoice";
+import Reports from "./pages/Reports";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
       <Route path="/purchase" element={<PurchaseVoucher />} />
       <Route path="/sales" element={<SalesVoucher />} />
       <Route path="/invoice/:id" element={<Invoice />} />
+      <Route path="/reports" element={<Reports />} />
     </Routes>
   );
 }
