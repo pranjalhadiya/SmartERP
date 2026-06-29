@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 import api from "../services/api";
+import { useNavigate } from "react-router-dom";
 
 function SalesVoucher() {
+
+  const navigate = useNavigate();
+
   const [customers, setCustomers] = useState([]);
   const [items, setItems] = useState([]);
   const [sales, setSales] = useState([]);
@@ -148,6 +152,7 @@ function SalesVoucher() {
               <th className="border p-3">Qty</th>
               <th className="border p-3">Rate</th>
               <th className="border p-3">Total</th>
+              <th className="border p-3">Invoice</th>
             </tr>
           </thead>
 
@@ -159,12 +164,21 @@ function SalesVoucher() {
                 <td className="border p-3">{sale.quantity}</td>
                 <td className="border p-3">₹{sale.rate}</td>
                 <td className="border p-3">₹{sale.total_amount}</td>
+                
+                <td className="border p-3">
+                  <button
+                    onClick={() => navigate(`/invoice/${sale.id}`)}
+                    className="bg-blue-500 text-white px-3 py-1 rounded"
+                  >
+                    Invoice
+                  </button>
+                </td>
               </tr>
             ))}
 
             {sales.length === 0 && (
               <tr>
-                <td colSpan="5" className="text-center p-5">
+                <td colSpan="6" className="text-center p-5">
                   No sales vouchers found
                 </td>
               </tr>

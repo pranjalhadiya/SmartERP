@@ -16,6 +16,8 @@ function Login() {
             });
 
             localStorage.setItem("token", res.data.access_token);
+            localStorage.setItem("refresh_token", res.data.refresh_token);
+            
             navigate("/companies");
         } catch (error) {
             alert("Invalid email or password");
