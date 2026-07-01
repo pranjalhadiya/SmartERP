@@ -12,7 +12,8 @@ function KeyboardShortcuts() {
       if (
         e.target.tagName === "INPUT" ||
         e.target.tagName === "TEXTAREA" ||
-        e.target.tagName === "SELECT"
+        e.target.tagName === "SELECT" ||
+        e.target !== document.body
       ) {
         return;
       }

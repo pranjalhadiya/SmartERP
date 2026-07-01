@@ -1,22 +1,26 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+
 from database.db import Base, engine
-from models.models import * 
+from models.models import *
+
 from routes import (
     auth_routes,
     company_routes,
-    ledger_routes,
-    item_routes,
-    voucher_routes,
     dashboard_routes,
     group_routes,
-    report_routes
+    item_routes,
+    ledger_routes,
+    report_routes,
+    voucher_routes,
 )
 
+# Create database tables if they do not already exist
 Base.metadata.create_all(bind=engine)
 
 app = FastAPI(title="SmartERP API")
 
+# Allow frontend React app to communicate with FastAPI backend
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
@@ -28,14 +32,15 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# Register application routes
 app.include_router(auth_routes.router)
 app.include_router(company_routes.router)
-app.include_router(ledger_routes.router)
-app.include_router(item_routes.router)
-app.include_router(voucher_routes.router)
 app.include_router(dashboard_routes.router)
 app.include_router(group_routes.router)
+app.include_router(item_routes.router)
+app.include_router(ledger_routes.router)
 app.include_router(report_routes.router)
+app.include_router(voucher_routes.router)
 
 
 @app.get("/")

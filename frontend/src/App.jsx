@@ -14,27 +14,29 @@ import SalesVoucher from "./pages/SalesVoucher";
 import Invoice from "./pages/Invoice";
 import Reports from "./pages/Reports";
 import KeyboardShortcuts from "./components/KeyboardShortcuts";
+import ShortcutPanel from "./components/ShortcutPanel";
 
 function App() {
   return (
     <>
       <KeyboardShortcuts />
-
-      <Routes>
-        <Route path="/" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/companies" element={<CompanySelection />} />
-        <Route path="/companies/create" element={<CreateCompany />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/ledgers" element={<Ledgers />} />
-        <Route path="/groups" element={<Groups />} />
-        <Route path="/items" element={<Items />} />
-        <Route path="/vouchers" element={<Vouchers />} />
-        <Route path="/purchase" element={<PurchaseVoucher />} />
-        <Route path="/sales" element={<SalesVoucher />} />
-        <Route path="/invoice/:id" element={<Invoice />} />
-        <Route path="/reports" element={<Reports />} />
-      </Routes>
+      <ShortcutPanel />
+      
+        <Routes>
+            <Route path="/" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/companies" element={<CompanySelection />} />
+            <Route path="/companies/create" element={<CreateCompany />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/ledgers" element={<Ledgers />} />
+            <Route path="/groups" element={<Groups />} />
+            <Route path="/items" element={<Items />} />
+            <Route path="/vouchers" element={<Vouchers />} />
+            <Route path="/purchase" element={<PurchaseVoucher />} />
+            <Route path="/sales" element={<SalesVoucher />} />
+            <Route path="/invoice/:id" element={<Invoice />} />
+            <Route path="/reports" element={<Reports />} />
+        </Routes>
     </>
   );
 }

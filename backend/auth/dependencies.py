@@ -1,8 +1,12 @@
-from fastapi import Depends, HTTPException
-from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
-from jose import jwt
 import os
+
 from dotenv import load_dotenv
+from fastapi import Depends, HTTPException
+from fastapi.security import (
+    HTTPAuthorizationCredentials,
+    HTTPBearer,
+)
+from jose import JWTError, jwt
 
 load_dotenv()
 
@@ -11,8 +15,9 @@ ALGORITHM = os.getenv("ALGORITHM")
 
 security = HTTPBearer()
 
+
 def get_current_user(
-    credentials: HTTPAuthorizationCredentials = Depends(security)
+    credentials: HTTPAuthorizationCredentials = Depends(security),
 ):
     token = credentials.credentials
 
@@ -20,13 +25,13 @@ def get_current_user(
         payload = jwt.decode(
             token,
             SECRET_KEY,
-            algorithms=[ALGORITHM]
+            algorithms=[ALGORITHM],
         )
 
         return payload
 
-    except:
+    except JWTError:
         raise HTTPException(
             status_code=401,
-            detail="Invalid token"
+            detail="Invalid token",
         )

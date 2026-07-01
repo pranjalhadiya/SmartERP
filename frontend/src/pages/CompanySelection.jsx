@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../services/api";
 
@@ -6,6 +6,9 @@ function CompanySelection() {
   const [companies, setCompanies] = useState([]);
   const [loading, setLoading] = useState(true);
   const [editingId, setEditingId] = useState(null);
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
+  const companyRef = useRef(null);
 
   const [form, setForm] = useState({
     name: "",
@@ -93,7 +96,34 @@ function CompanySelection() {
 
   useEffect(() => {
     getCompanies();
+
+    setTimeout(() => {
+      companyRef.current?.focus();
+    }, 100);
   }, []);
+
+  const handleCompanyKeyDown = (e) => {
+    if (companies.length === 0 || editingId) return;
+
+    if (e.key === "ArrowDown") {
+      e.preventDefault();
+      setSelectedIndex((prev) =>
+        prev < companies.length - 1 ? prev + 1 : prev
+      );
+    }
+
+    if (e.key === "ArrowUp") {
+      e.preventDefault();
+      setSelectedIndex((prev) =>
+        prev > 0 ? prev - 1 : prev
+      );
+    }
+
+    if (e.key === "Enter") {
+      e.preventDefault();
+      selectCompany(companies[selectedIndex].id);
+    }
+  };
 
   if (loading) {
     return <h1 className="p-10 text-xl">Loading companies...</h1>;
@@ -191,11 +221,19 @@ function CompanySelection() {
             </button>
           </div>
         ) : (
-          <div className="grid gap-4">
-            {companies.map((company) => (
+          <div
+            ref={companyRef}
+            tabIndex={0}
+            onKeyDown={handleCompanyKeyDown}
+            className="grid gap-4 outline-none"
+          >
+            {companies.map((company, index) => (
               <div
                 key={company.id}
-                className="bg-white p-5 rounded shadow hover:bg-blue-50"
+                className={`p-5 rounded shadow hover:bg-blue-50 ${selectedIndex === index
+                  ? "bg-blue-100 border-2 border-blue-500"
+                  : "bg-white border-2 border-transparent"
+                  }`}
               >
                 <div
                   onClick={() => selectCompany(company.id)}
